@@ -6,18 +6,18 @@ def count_unique_digits(number):
 
 def bubble_sort_ascending(string):
     # Custom Bubble Sort implementation for sorting in ascending order
-    n = len(string)
-    for current_index in range(n):
-        for next_index in range(0, n - current_index - 1):
+    size = len(string)
+    for current_index in range(size):
+        for next_index in range(0, size - current_index - 1):
             if string[next_index] > string[next_index + 1]:
                 string[next_index], string[next_index + 1] = string[next_index + 1], string[next_index]
     return string
 
 def bubble_sort_descending(string):
     # Custom Bubble Sort implementation for sorting in descending order
-    n = len(string)
-    for current_index in range(n):
-        for next_index in range(0, n - current_index - 1):
+    size = len(string)
+    for current_index in range(size):
+        for next_index in range(0, size - current_index - 1):
             if string[next_index] < string[next_index + 1]:
                 string[next_index], string[next_index + 1] = string[next_index + 1], string[next_index]
     return string
@@ -56,12 +56,12 @@ def find_kaprekar_iterations(number):
     reversed_sorted_number = bubble_sort_descending(original_number)
 
     # Conversion from string to integer
-    increasing = string_to_integer(''.join(sorted_number))
-    decreasing = string_to_integer(''.join(reversed_sorted_number))
+    highestNumber = string_to_integer(''.join(sorted_number))
+    lowestNumber = string_to_integer(''.join(reversed_sorted_number))
 
     # Final calculation of bigger-smaller
     # number
-    result_string = str(abs(increasing - decreasing))
+    result_string = str(abs(highestNumber - lowestNumber))
 
     # If 6174 is not reached yet,
     # then recur with the updated string
@@ -69,7 +69,7 @@ def find_kaprekar_iterations(number):
 
 # Driver's code
 if __name__ == "__main__":
-    number = "9831"
+    number = input("Enter Number: ")
 
     # Function call
     result = find_kaprekar_iterations(number)
